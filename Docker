@@ -5,8 +5,8 @@ ENV ZWAY_VERSION=3.2.2
 
 RUN apt-get update -y \
   && DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y \
-    	curl \
-   	 libarchive13 \
+    curl \
+   	libarchive13 \
 	libxml2 \
 	sharutils \
 	tzdata \
