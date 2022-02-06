@@ -1,0 +1,23 @@
+version: "3.5"
+volumes:
+  z-way-server_config_zddx: {}
+  z-way-server_automation-storage: {}
+  z-way-server_automation-userModules: {}
+  z-way-server_htdocs-smarthome-user: {}
+services:
+  z-way-server:
+    build: .
+    image: "z-way-server"
+    container_name: z-way-server
+    restart: always
+    volumes:
+      - "z-way-server_config_zddx:/opt/z-way-server/config/zddx"
+      - "z-way-server_automation-storage:/opt/z-way-server/automation/storage"
+      - "z-way-server_automation-userModules:/opt/z-way-server/automation/userModules"
+      - "z-way-server_htdocs-smarthome-user:/opt/z-way-server/htdocs/smarthome/user/"
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/etc/timezone:/etc/timezone:ro"
+    ports:
+      - 8083:8083
+    devices:
+      - "/dev/ttyUSB0:/dev/ttyS4"
