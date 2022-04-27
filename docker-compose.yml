@@ -20,4 +20,4 @@ services:
     ports:
       - 8083:8083
     devices:
-      - "/dev/ttyUSB0:/dev/ttyS4"
+      - "/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0:/dev/ttyS4"
