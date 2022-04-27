@@ -17,7 +17,8 @@ services:
       - "z-way-server_htdocs-smarthome-user:/opt/z-way-server/htdocs/smarthome/user/"
       - "/etc/localtime:/etc/localtime:ro"
       - "/etc/timezone:/etc/timezone:ro"
-    ports:
-      - 8083:8083
+      - "/var/run/dbus:/var/run/dbus"
+      - "/var/run/avahi-daemon/socket:/var/run/avahi-daemon/socket"
     devices:
       - "/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0:/dev/ttyS4"
+    network_mode: "host"
