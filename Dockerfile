@@ -1,25 +1,26 @@
-FROM ubuntu:rolling
+FROM ubuntu:focal
 
 ENV PATH=/opt/z-way-server:$PATH
-ENV ZWAY_VERSION=3.2.3
+ENV ZWAY_VERSION=4.1.1
 
 RUN chmod 1777 /tmp
 
 RUN apt-get update -y \
   && DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y \
-        curl \
-        libarchive13 \
-        libxml2 \
-        sharutils \
-        tzdata \
-        gawk \
-        libc-ares2 \
-        libavahi-compat-libdnssd-dev \
-        libwebsockets16 \
-        libmosquitto1 \
+    curl \
+   	libarchive13 \
+	  libxml2 \
+	  sharutils \
+	  tzdata \
+	  gawk \
+	  libc-ares2 \
+	  libavahi-compat-libdnssd-dev \
+	  libwebsockets15 \
+	  libmosquitto1 \
+	  libcurl3-gnutls \
+	  logrotate \
   && apt-get clean \
-  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
-  && ln -s /usr/lib/x86_64-linux-gnu/libwebsockets.so.16 /usr/lib/x86_64-linux-gnu/libwebsockets.so.15
+  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN curl -SLO https://storage.z-wave.me/z-way-server/z-way-${ZWAY_VERSION}_amd64.deb \
  && dpkg -i z-way-${ZWAY_VERSION}_amd64.deb \
